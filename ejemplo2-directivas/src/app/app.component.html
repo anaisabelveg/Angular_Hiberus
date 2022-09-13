@@ -1,0 +1,148 @@
+<h1>Directivas</h1>
+
+<h2>Directiva ngFor - Todos los alumnos</h2>
+<ul>
+  <li *ngFor="let alum of alumnos"> {{alum.nombre}} </li>
+</ul>
+
+<h2>Directiva ngFor - Todos los alumnos con indice</h2>
+<ul>
+  <li *ngFor="let alum of alumnos; index as i"> 
+     Elemento {{i+1}}.- {{alum.nombre}} 
+  </li>
+</ul>
+
+<h2>Ejercicio- mostrar los alumnos (nombre, apellido y nota) en tabla</h2>
+<table >
+    <tr>
+      <!-- th*3 -->
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Nota</th>
+    </tr>
+    <tr *ngFor="let alum of alumnos">
+      <td>{{alum.nombre}}</td>
+      <td>{{alum.apellido}}</td>
+      <td>{{alum.nota}}</td>
+    </tr>
+</table>
+
+<h2>Directiva ngIf - Mostrar solo los alumnos aprobados</h2>
+<ul>
+  <!-- No se pueden tener 2 directivas estructurales en la misma etiqueta  -->
+  <ng-container *ngFor="let alum of alumnos">
+    <li  *ngIf="alum.nota >= 5"> {{alum.nombre}} </li>
+  </ng-container>
+</ul>
+
+<ul>
+  <!-- No se pueden tener 2 directivas estructurales en la misma etiqueta  -->
+  <span *ngFor="let alum of alumnos">
+    <li  *ngIf="alum.nota >= 5"> {{alum.nombre}} </li>
+  </span>
+</ul>
+
+<h2>Directiva ngIf - Mostrar solo los alumnos suspensos</h2>
+<ul>
+  <ng-container *ngFor="let alum of alumnos">
+    <li  *ngIf=" !(alum.nota >= 5)"> {{alum.nombre}} </li>
+  </ng-container>
+</ul>
+
+<ul>
+  <ng-container *ngFor="let alum of alumnos">
+    <li  *ngIf="alum.nota < 5"> {{alum.nombre}} </li>
+  </ng-container>
+</ul>
+
+<h2>Directiva ngIf - Mostrar solo los alumnos repetidores</h2>
+<ul>
+  <ng-container *ngFor="let alum of alumnos">
+    <li *ngIf="alum.repetidor"> {{alum.nombre}} </li>
+  </ng-container>
+</ul>
+
+<h2>Directiva ngIf - Mostrar solo los alumnos NO repetidores</h2>
+<ul>
+  <ng-container *ngFor="let alum of alumnos">
+    <li  *ngIf="!alum.repetidor"> {{alum.nombre}} </li>
+  </ng-container>
+</ul>
+
+<h2>Ejercicio - Mostrar los alumnos suspensos que sean repetidores</h2>
+<ul>
+  <ng-container *ngFor="let alum of alumnos">
+    <li  *ngIf="alum.nota < 5 && alum.repetidor"> {{alum.nombre}} </li>
+  </ng-container>
+</ul>
+
+<h2>Directiva ngStyle</h2>
+<p [ngStyle]="{color: 'blue', fontWeight: 'bold', backgroundColor: 'yellow'}">
+  Esto es una prueba
+</p>
+
+<h2>Directiva ngStyle - Verde los aprobados y rojo los suspensos</h2>
+<ul>
+  <li *ngFor="let alum of alumnos"
+      [ngStyle] = "{color: alum.nota >= 5 ? 'green' : 'red'}"> 
+    {{alum.nombre}} 
+  </li>
+</ul>
+
+<h2>Directiva ngClass</h2>
+<p [ngClass]="'rojo borde'">
+  Esto es una prueba
+</p>
+
+<p [ngClass]="['rojo borde']">
+  Esto es una prueba
+</p>
+
+<p [ngClass]="['rojo', 'borde']">
+  Esto es una prueba
+</p>
+
+<h2>Directiva ngClass - Verde los aprobados y rojo los suspensos</h2>
+<ul>
+  <li *ngFor="let alum of alumnos"
+      [ngClass] = "alum.nota >= 5 ? 'verde' : 'rojo'"> 
+    {{alum.nombre}} 
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let alum of alumnos"
+      [ngClass] = "{verde: alum.nota >= 5, rojo: alum.nota < 5}"> 
+    {{alum.nombre}} 
+  </li>
+</ul>
+
+<h2>Directivas ngSwitch y ngSwitchCase - Resaltar por comportamiento</h2>
+<ul>
+  <li *ngFor="let alum of alumnos" [ngSwitch]="alum.comportamiento" >
+      <div *ngSwitchCase=" 'bueno' " [ngStyle]="{backgroundColor: 'green'}">
+        {{alum.nombre}} {{alum.apellido}} {{alum.nota}}
+      </div>
+      <div *ngSwitchCase=" 'regular' " [ngStyle]="{backgroundColor: 'orange'}">
+        {{alum.nombre}} {{alum.apellido}} {{alum.nota}}
+      </div>
+      <div *ngSwitchCase=" 'malo' " [ngStyle]="{backgroundColor: 'red'}">
+        {{alum.nombre}} {{alum.apellido}} {{alum.nota}}
+      </div>
+      <div *ngSwitchDefault>
+        {{alum.nombre}} {{alum.apellido}} {{alum.nota}}
+      </div>
+  </li>
+</ul>
+
+<h2>Directiva personalizada - Mostrar aprobados y suspensos</h2>
+<ul>
+  <li *ngFor="let alum of alumnos" [appNota]="alum"></li>
+</ul>
+
+<h2>Directiva personalizada - Resaltar a los alumnos con buen comportamiento</h2>
+<ul>
+  <li *ngFor="let alum of alumnos" [appPintar]="alum.comportamiento">
+    {{alum.nombre}} {{alum.apellido}} {{alum.nota}}
+  </li>
+</ul>

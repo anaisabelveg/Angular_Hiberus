@@ -1,0 +1,22 @@
+table, td, th{
+    border: thin solid black;
+    border-collapse: collapse;
+}
+
+.verde{
+    color: green;
+}
+
+.rojo{
+    color: red;
+}
+
+.borde{
+    border: thin solid blue;
+}
+
+.resaltar{
+    color: blue;
+    font-size: x-large;
+    background-color: silver;
+}
