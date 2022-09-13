@@ -1,2 +1,22 @@
 <h1>Mi primera web con Angular</h1>
 <h2>Realizada por {{nombre}}</h2>
+
+<h1>Ejemplos de Binding</h1>
+
+<h2>String interpolation</h2>
+{{'Me llamo ' + nombre + ' ' + apellido + " y tengo " + edad + " años"}}<br/>
+Me llamo {{nombre}} {{apellido}} y tengo {{ edad }} años <br/>
+{{1 + 4 + 7}} <br/>
+Es mi cumpleaños y cumplo {{edad + 1}} años
+
+<h2>Property binding</h2>
+<button [disabled]="deshabilitado">Pulsame</button>
+
+<h2>Event binding</h2>
+<button (click)="saludar()">Saludar</button>
+<div [class]="estilo" 
+    (mouseover)="estilo='verde borde' " (mouseout)='estilo="rojo" '>
+</div>
+
+<h2>Two way Data Binding</h2>
+<input type="text" placeholder="Escribe tu nombre" [(ngModel)]="nombre" />
