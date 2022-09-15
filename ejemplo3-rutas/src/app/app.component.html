@@ -1,0 +1,12 @@
+<h1>Ejemplo de rutas</h1>
+
+<nav>
+  <a routerLink="c1" routerLinkActive="negrita">Componente 1</a> | 
+  <a [routerLink]="['/c2']" routerLinkActive="negrita">Componente 2</a> | 
+  <a routerLink="/c3/hotel_Riu" 
+    [queryParams]="{entrada:'16/9/2022', salida:'18/9/2022', personas:2, habitacion:'doble'}"
+    routerLinkActive="negrita">Componente 3</a>
+</nav>
+
+<!-- Contenedor donde podemos intercambiar los componentes -->
+<router-outlet></router-outlet>

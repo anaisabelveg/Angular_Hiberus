@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let alum of alumnos">
+         <a routerLink="/detalle/{{alum.nombre}}" [queryParams]="{alum: alum|json}">
+            {{alum.nombre}}
+         </a> 
+    </li>
+</ul>
