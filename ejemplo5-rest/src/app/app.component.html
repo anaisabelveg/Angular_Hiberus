@@ -1,0 +1,29 @@
+<h1>Lista de pokemons</h1>
+
+<h2>Busca tu pokemon</h2>
+<label>Nombre:</label>
+<input type="text" [(ngModel)]="nombre" />
+<button (click)="buscarPokemon()">Buscar</button>
+
+<div *ngIf="pokemon != null" [ngStyle]="{backgroundColor: 'silver'}">
+  <h3>Datos del pokemon</h3>
+  <p>Nombre: {{pokemon.name}}</p>
+  <p>Order: {{pokemon.order}}</p>
+  <p>Peso: {{pokemon.weight}}</p>
+  <p>Altura: {{pokemon.height}}</p>
+  <p>Habilidades:</p>
+  <ol>
+    <li *ngFor="let habilidad of pokemon.abilities">
+      {{habilidad.ability.name}}  {{habilidad.ability.url}}
+    </li>
+  </ol>
+</div>
+
+<ul>
+  <li *ngFor="let pokemon of pokemons">
+    {{pokemon.name}}
+  </li>
+</ul>
+
+<button (click)="solicitar(this.rutaAnterior)">Anterior</button>
+<button (click)="solicitar(this.rutaSiguiente)">Siguientes</button>
