@@ -1,0 +1,15 @@
+
+<div class="container text-center">
+    <div class="row" [ngStyle]="{'margin-top': '50px'}">
+      <div class="col" *ngFor="let usuario of usuarios; index as i">
+        <div class="card" style="width: 15rem; margin-bottom: 1rem;">
+            <img src="https://i.pravatar.cc/150?img={{i}}" class="card-img-top" alt="{{usuario.name}}">
+            <div class="card-body">
+              <h5 class="card-title">{{usuario.name}}, {{usuario.username}}</h5>
+              <p class="card-text">{{usuario.email}}</p>
+            </div>
+        </div>
+      </div>  
+    </div>
+</div>
+
