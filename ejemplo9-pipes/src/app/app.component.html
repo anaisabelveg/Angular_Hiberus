@@ -1,0 +1,61 @@
+<h1>Ejemplo de pipes</h1>
+
+<h2>Pipes de texto</h2>
+Sin formato: {{texto}} <br/>
+Minusculas: {{texto | lowercase}} <br/>
+Mayusculas: {{texto | uppercase}} <br/>
+Titulo: {{texto | titlecase}} <br/>
+
+<h2>Pipes json</h2>
+Sin formato: {{persona}} <br/>
+Con formato JSON: {{persona | json}} <br/>
+
+<!-- Para que detecte idioma:
+     npm i @angular/localize
+    
+     * Opcion 1
+    En angular.json agregar: 
+   "ejemplo9-pipes": {
+      "i18n": {
+        "sourceLocale": "es"
+      },
+    
+     * Opcion 2
+      en app.module.ts: configurar localeES
+    -->
+
+<h2>Pipes de numeros</h2>
+Sin formato: {{numero}} <br/>
+Numero: {{numero | number}} <br/>
+Numero con 10 digitos y 2 decimales: {{numero | number: '10.2'}} <br/>
+Numero con 18 digitos y 4 decimales: {{numero | number: '18.4-4'}} <br/>
+Numero 5 decimales: {{numero | number: '.5-5'}} <br/>
+Numero 5 decimales: {{numero | number: '.5-5': 'en'}} <br/>
+
+<h2>Pipes de porcentaje</h2>
+Sin formato: {{porcentaje}} <br/>
+Porcentaje: {{porcentaje | percent}} <br/>
+Porcentaje: {{porcentaje | percent: '.3-3'}} <br/>
+Porcentaje: {{porcentaje | percent: '.3-3': 'en'}} <br/>
+
+<h2>Pipes de moneda</h2>
+Sin formato: {{importe}} <br/>
+Importe: {{importe | currency}} <br/>
+Importe: {{importe | currency: 'USD'}} <br/>
+Importe: {{importe | currency: 'EUR'}} <br/>
+Importe: {{importe | currency: 'EUR': 'code'}} <br/>
+Importe: {{importe | currency: 'EUR': 'symbol'}} <br/>
+Importe: {{importe | currency: 'EUR': 'symbol': '.4-4'}} <br/>
+Importe: {{importe | currency: 'EUR': 'symbol': '.4-4': 'en'}} <br/>
+
+<h2>Pipes de fecha</h2>
+Sin formato: {{fecha}} <br/>
+Fecha: {{fecha | date}} <br/>
+Fecha short: {{fecha | date: 'short'}} <br/>
+Fecha medium: {{fecha | date: 'medium'}} <br/>
+Hora: {{fecha | date: 'shortTime'}} <br/>
+Fecha: {{fecha | date: 'shortDate'}} <br/>
+Fecha personalizada: {{fecha | date: 'dd/MM/yyyy'}} <br/>
+Fecha personalizada: {{fecha | date: 'dd MMM yy'}} <br/>
+Hora canaria: {{fecha | date: 'shortTime': '+1'}} <br/>
+Fecha: {{fecha | date: 'shortDate': '': 'en'}} <br/>
