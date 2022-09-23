@@ -1,3 +1,6 @@
 <ul>
-    <li *ngFor="let museo of museos">{{museo.nombre}}</li>
+    <li *ngFor="let museo of museos">
+        <a routerLink="/museos/{{museo.id}}">{{museo.nombre}}</a>
+        <!-- <a routerLink="{{museo.id}}">{{museo.nombre}}</a> -->
+    </li>
 </ul>

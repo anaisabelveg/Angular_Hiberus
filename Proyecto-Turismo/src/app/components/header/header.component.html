@@ -1,2 +1,17 @@
 <img src="../../../assets/logo.png" alt="Comunidad de Madrid">
-<h1>Turismo por Madrid</h1>
+<h1>{{ "app.titulo" | translate }}</h1>
+
+<span>
+    <a (click)="cambiarIdioma('es')"> 
+        <img src="../../../assets/banderas/spain.png" alt="Spain" /> 
+    </a>
+    <a (click)="cambiarIdioma('en')"> 
+        <img src="../../../assets/banderas/inglaterra.png" alt="Ingles" /> 
+    </a>
+    <a (click)="cambiarIdioma('de')"> 
+        <img src="../../../assets/banderas/alemania.png" alt="Aleman" /> 
+    </a>
+    <a (click)="cambiarIdioma('fr')"> 
+        <img src="../../../assets/banderas/francia.png" alt="Frances" /> 
+    </a>
+</span>

@@ -1,3 +1,6 @@
+import { GoogleMapsModule } from '@angular/google-maps';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,11 +12,13 @@ import { HomeComponent } from './components/home/home.component';
 import { MuseosComponent } from './components/museos/museos.component';
 import { RouterModule, Routes } from '@angular/router';
 import { EquipoComponent } from './components/equipo/equipo.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DetalleMuseoComponent } from './components/detalle-museo/detalle-museo.component';
 
 const misRutas: Routes = [
   {path:'home', component: HomeComponent},
   {path:'museos', component: MuseosComponent},
+  {path:'museos/:id', component: DetalleMuseoComponent},
   {path:'equipo', component: EquipoComponent},
   {path:'', redirectTo: 'home', pathMatch: 'full'}
 ]
@@ -26,12 +31,23 @@ const misRutas: Routes = [
     NavbarComponent,
     HomeComponent,
     MuseosComponent,
-    EquipoComponent
+    EquipoComponent,
+    DetalleMuseoComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(misRutas),
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [HttpClient]
+      }
+    }),
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
