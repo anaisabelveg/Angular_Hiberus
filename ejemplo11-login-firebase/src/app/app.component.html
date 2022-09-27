@@ -1,0 +1,34 @@
+<div *ngIf="estoyLogado" [ngStyle]="{'float':'right'}">
+  Usuario: {{emailValidado}}<br/>
+  <button (click)="logout()">Cerrar session</button>
+</div>
+
+<div *ngIf="registro">
+  <h2>Modo registro</h2>
+  Ya estoy registrado
+  <button (click)="registro=false">Login</button>
+</div>
+
+<div *ngIf="!registro">
+  <h2>Modo login</h2>
+  Soy nuevo, no estoy registrado
+  <button (click)="registro=true">Registrarme</button>
+</div>
+
+<div>
+  <label for="emailTxt">Email:</label>
+  <input type="email" [(ngModel)]="email" id="emailTxt" /> <br/>
+
+  <label for="pwTxt">Password:</label>
+  <input type="password" [(ngModel)]="pw" id="pwTxt" /> <br/>
+
+  <div *ngIf="registro">
+    <label for="confpwTxt">Confirmar Password:</label>
+    <input type="password" [(ngModel)]="conf_pw" id="confpwTxt" /> <br/>
+  </div>
+
+  <button *ngIf="!registro" (click)="login()">Acceder</button>
+  <button *ngIf="registro" (click)="registrar()">Registrarme</button>
+</div>
+
+<button (click)="comprobarLogado()">Comprobar si estoy logado</button>
