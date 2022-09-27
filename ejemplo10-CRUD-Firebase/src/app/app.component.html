@@ -19,22 +19,66 @@
 
 <h2>Buscar un amigo por nombre:</h2>
 <label>Nombre:</label>
-<input type="text" [(ngModel)]="nombre" />
+<input type="text" [(ngModel)]="nombretxt" />
 <button (click)="buscarPorNombre()">Buscar</button>
 
-<div *ngIf="amigo != null">
-  Nombre: {{amigo.nombre}}
-  Telefono: {{amigo.telefono}}
+<div *ngIf="amigo != null" [ngStyle]="{'backgroundColor':'silver'}">
+  <label (click)="amigo=null" [ngStyle]="{'float':'right', 'margin':'5px'}">x</label>
+  <h3>Datos del contacto</h3>
+  <p> Nombre: {{amigo.nombre}} </p>
+  <p> Telefono: {{amigo.telefono}} </p>
+  <button (click)="mostrarFormulario()">Editar</button>
+</div>
+
+<div *ngIf="editar" [ngStyle]="{'backgroundColor':'rgb(230,219,178)'}">
+  <h3>Actualizar amigo</h3>
+  <form [formGroup]="amigoForm">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre" /> 
+    <div *ngIf="nombre?.errors?.['required']" [ngStyle]="{color: 'red'}">
+      * Nombre obligatorio
+    </div>
+    
+    <div *ngIf="nombre?.errors?.['minlength']" [ngStyle]="{color: 'red'}">
+      * Minimo 3 caracteres
+    </div><br/>
+  
+    <label>Telefono:</label>
+    <input type="text" formControlName="telefono" />
+    <div *ngIf="telefono?.errors?.['required']" [ngStyle]="{color: 'red'}">
+      * Telefono obligatorio
+    </div>
+    
+    <div *ngIf="telefono?.errors?.['pattern']" [ngStyle]="{color: 'red'}">
+      * Debe empezar por 6 ó 7 y 9 digitos en total
+    </div><br/>
+  
+    <button (click)="guardarCambios()" [disabled]="!amigoForm.valid">Guardar cambios</button>
+  </form>
 </div>
 
 
 <h2>Alta un amigo</h2>
 <form [formGroup]="amigoForm">
   <label>Nombre:</label>
-  <input type="text" formControlName="nombre" /> <br/>
+  <input type="text" formControlName="nombre" /> 
+  <div *ngIf="nombre?.errors?.['required']" [ngStyle]="{color: 'red'}">
+    * Nombre obligatorio
+  </div>
+  
+  <div *ngIf="nombre?.errors?.['minlength']" [ngStyle]="{color: 'red'}">
+    * Minimo 3 caracteres
+  </div><br/>
 
   <label>Telefono:</label>
-  <input type="text" formControlName="telefono" /> <br/>
+  <input type="text" formControlName="telefono" />
+  <div *ngIf="telefono?.errors?.['required']" [ngStyle]="{color: 'red'}">
+    * Telefono obligatorio
+  </div>
+  
+  <div *ngIf="telefono?.errors?.['pattern']" [ngStyle]="{color: 'red'}">
+    * Debe empezar por 6 ó 7 y 9 digitos en total
+  </div><br/>
 
-  <button (click)="alta()">Agregar contacto</button>
+  <button (click)="alta()" [disabled]="!amigoForm.valid">Agregar contacto</button>
 </form>

@@ -10,7 +10,9 @@ export class AgendaService {
   constructor(private angularFirestore: AngularFirestore) { }
 
   public todosAmigos(): Observable<DocumentChangeAction<unknown>[]>{
-    return this.angularFirestore.collection("agenda").snapshotChanges();
+    return this.angularFirestore
+      .collection("agenda", (pepito) => pepito.orderBy('telefono', 'desc'))
+      .snapshotChanges();
   }
 
   public buscarAmigo(id: string): Observable<any>{
@@ -30,5 +32,12 @@ export class AgendaService {
 
   public nuevoAmigo(nuevo: any){
     return this.angularFirestore.collection('agenda').add(nuevo);
+  }
+
+  public modificarAmigo(id:string, data: any){
+    // p.e. cambio el telefono de un amigo:
+    // update -> modifica solo los campos con cambios, solo cambiaria el telefono
+    // set -> modifica el documento entero, actualizaria todos los campos
+    return this.angularFirestore.collection('agenda').doc(id).update(data);
   }
 }
