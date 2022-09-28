@@ -1,0 +1,11 @@
+<div *ngIf="!user">
+  <p>Para acceder tienes que logarte</p>
+  <asl-google-signin-button></asl-google-signin-button>
+</div>
+
+
+<div *ngIf="user">
+  <p [ngStyle]="{'text-align':'right'}">User: {{user.email}}</p>
+  <p [ngStyle]="{'text-align':'right'}" (click)="logout()">Cerrar sesion</p>
+  <h2>Bienvenido a mi web</h2>
+</div>
