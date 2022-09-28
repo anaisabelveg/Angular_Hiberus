@@ -1,0 +1,10 @@
+<div *ngIf="usuario.length == 0">
+  <p>Para acceder tienes que logarte</p>
+  <button (click)="login()">Login</button>
+</div>
+
+<div *ngIf="usuario.length > 0">
+  <p [ngStyle]="{'text-align':'right'}">User: {{usuario}}</p>
+  <p [ngStyle]="{'text-align':'right'}" (click)="logout()">Cerrar sesion</p>
+  <h2>Bienvenido a mi web</h2>
+</div>
