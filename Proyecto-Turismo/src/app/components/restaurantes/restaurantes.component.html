@@ -1,0 +1,31 @@
+<mat-form-field>
+    <input matInput placeholder="Buscar ..." [(ngModel)]="dato" (keyup)="filtrar()" />
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.nombre}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="cocina">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cocina</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.cocina}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Precio</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.precio}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="terraza">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Terraza</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.terraza}}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="nombreColumnas"></mat-header-row>
+    <mat-row *matRowDef="let item; columns: nombreColumnas"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSize]="2" [pageSizeOptions]="[2,4,6]"
+    showFirstLastButtons=""></mat-paginator>

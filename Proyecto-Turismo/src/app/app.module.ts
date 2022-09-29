@@ -1,3 +1,5 @@
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -14,11 +16,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DetalleMuseoComponent } from './components/detalle-museo/detalle-museo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
+import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+
 
 const misRutas: Routes = [
   {path:'home', component: HomeComponent},
   {path:'museos', component: MuseosComponent},
   {path:'museos/:id', component: DetalleMuseoComponent},
+  {path:'restaurantes', component: RestaurantesComponent},
   {path:'equipo', component: EquipoComponent},
   {path:'', redirectTo: 'home', pathMatch: 'full'}
 ]
@@ -32,7 +48,9 @@ const misRutas: Routes = [
     HomeComponent,
     MuseosComponent,
     EquipoComponent,
-    DetalleMuseoComponent
+    DetalleMuseoComponent,
+    RestaurantesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +65,34 @@ const misRutas: Routes = [
         deps: [HttpClient]
       }
     }),
-    GoogleMapsModule
+    GoogleMapsModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    AngularFirestore, 
+    MatPaginatorIntl,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('862431741831866')
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
