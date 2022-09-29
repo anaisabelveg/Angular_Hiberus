@@ -1,0 +1,36 @@
+<mat-form-field>
+  <input matInput placeholder="Buscar ..." [(ngModel)]="dato" (keyup)="filtrar()" />
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let alum">{{alum.nombre}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="apellido">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+    <mat-cell *matCellDef="let alum">{{alum.apellido}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nota">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Nota</mat-header-cell>
+    <mat-cell *matCellDef="let alum">{{alum.nota}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="comportamiento">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Comportamiento</mat-header-cell>
+    <mat-cell *matCellDef="let alum">{{alum.comportamiento}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="repetidor">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Repetidor</mat-header-cell>
+    <mat-cell *matCellDef="let alum">{{alum.repetidor}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="nombreColumnas"></mat-header-row>
+  <mat-row *matRowDef="let alum; columns: nombreColumnas"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="2" [pageSizeOptions]="[2,4,6]"
+  showFirstLastButtons=""></mat-paginator>
