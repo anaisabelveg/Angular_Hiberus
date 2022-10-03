@@ -1,0 +1,60 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+// Con colores definidos en material
+// $my-app-primary: mat-palette($mat-amber, 500);
+// $my-app-accent: mat-palette($mat-grey, 800);
+// $my-app-warn: mat-palette($mat-red, 500);
+
+
+// Con colores de nuestra paleta personalizada
+
+// Tema generado en la pagina: mcg.mbitson.com
+// Una vez elegidos los colores de la paleta
+// se copia el codigo en AngularJS 2 (Material)
+// y se pega aqui
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #e2e8ee,
+    100 : #b8c6d4,
+    200 : #88a1b7,
+    300 : #587b9a,
+    400 : #355e85,
+    500 : #11426f,
+    600 : #0f3c67,
+    700 : #0c335c,
+    800 : #0a2b52,
+    900 : #051d40,
+    A100 : #76a4ff,
+    A200 : #4383ff,
+    A400 : #1061ff,
+    A700 : #0053f6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+// Ahora elegimos los colores de nuestra paleta personalizada
+$my-app-primary: mat-palette($md-mcgpalette0, 400);
+$my-app-accent: mat-palette($md-mcgpalette0, 600);
+$my-app-warn: mat-palette($md-mcgpalette0, A100);
+
+// Crear el tema
+$my-app-theme: mat-light-theme($my-app-primary,$my-app-accent, $my-app-warn);
+
+// Lo incluimos en angular-material-theme
+@include angular-material-theme($my-app-theme);
