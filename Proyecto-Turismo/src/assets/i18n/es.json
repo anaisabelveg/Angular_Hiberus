@@ -4,5 +4,6 @@
     "nav.museos": "Museos",
     "nav.restaurantes": "Restaurantes",
     "nav.equipo": "Equipo",
-    "nav.contacto": "Contacto"
+    "nav.contacto": "Contacto",
+    "nav.login":"Iniciar sesion"
 }

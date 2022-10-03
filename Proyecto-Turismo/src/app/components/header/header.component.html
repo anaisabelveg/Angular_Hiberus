@@ -1,7 +1,15 @@
 <img src="../../../assets/logo.png" alt="Comunidad de Madrid">
 <h1>{{ "app.titulo" | translate }}</h1>
 
+
 <span>
+    <ng-container *ngIf="usuario.length == 0">
+        <a (click)="login()">{{"nav.login" | translate}}</a> <br/>
+    </ng-container>
+    <ng-container *ngIf="usuario.length > 0">
+        Usuario: {{usuario}} <a (click)="logout()">Cerrar session</a> <br/>
+    </ng-container>
+
     <a (click)="cambiarIdioma('es')"> 
         <img src="../../../assets/banderas/spain.png" alt="Spain" /> 
     </a>

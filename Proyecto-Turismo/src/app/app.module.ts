@@ -25,10 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
-
 
 const misRutas: Routes = [
   {path:'home', component: HomeComponent},
@@ -49,8 +47,7 @@ const misRutas: Routes = [
     MuseosComponent,
     EquipoComponent,
     DetalleMuseoComponent,
-    RestaurantesComponent,
-    LoginComponent
+    RestaurantesComponent
   ],
   imports: [
     BrowserModule,
