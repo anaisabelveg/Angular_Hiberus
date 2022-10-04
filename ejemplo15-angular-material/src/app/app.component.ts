@@ -8,7 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  estudios = new FormControl('');
+  estudios: string = '';
+  estado: string = '';
+  sexo: string = '';
+  hobbiesCine:string = '';
+  hobbiesTeatro:string = '';
+  hobbiesMusica:string = '';
+  habilitar:boolean = false;
+
+  estadoCivil = ['Soltero', 'Casado', 'Viudo', 'Divorciado', 'Pareja de Hecho']
 
   nombres = [
     {nombre: 'Juan', color:'yellow'},
@@ -18,4 +26,14 @@ export class AppComponent {
     {nombre: 'Pablo', color:'green'},
     {nombre: 'Fernando', color:'silver'},
   ];
+
+  mostrar(){
+    console.log(this.sexo);
+    console.log(this.estudios);
+    console.log(this.estado);
+    console.log(this.hobbiesCine);
+    console.log(this.hobbiesTeatro);
+    console.log(this.hobbiesMusica);
+    console.log(this.habilitar);
+  }
 }

@@ -1,5 +1,7 @@
 <mat-tab-group>
   <mat-tab label="Formulario">
+
+    <p class="mat-display-1">Campos input</p>
     <mat-form-field >
       <mat-label>Nombre</mat-label>
       <input matInput>
@@ -11,15 +13,63 @@
     </mat-form-field> <br/>
 
     <mat-form-field >
-      <mat-label>Estudios</mat-label>
-      <mat-select [formControl]="estudios">
-          <mat-option [value]="">Sin estudios</mat-option>
-          <mat-option [value]="">Estudios primarios</mat-option>
-          <mat-option [value]="">ESO</mat-option>
-          <mat-option [value]="">Grado medio</mat-option>
-          <mat-option [value]="">Grado superior</mat-option>
+      <mat-label>Password:</mat-label>
+      <input matInput type="password">
+    </mat-form-field> <br/>
+
+    <mat-form-field >
+      <mat-label>Email:</mat-label>
+      <input matInput type="email">
+    </mat-form-field> <br/>
+
+    <mat-form-field >
+      <mat-label>Color:</mat-label>
+      <input matInput type="color">
+    </mat-form-field> <br/>
+
+    <mat-form-field >
+      <mat-label>Fecha:</mat-label>
+      <input matInput type="date">
+    </mat-form-field> <br/>
+
+
+    <p class="mat-display-1">Componentes de Seleccion</p>
+
+    <mat-form-field>
+      <mat-label>Estado Civil:</mat-label>
+      <mat-select [(value)]="estado">
+          <mat-option *ngFor="let opcion of estadoCivil"  [value]="opcion">
+            {{opcion}}
+          </mat-option>
       </mat-select>
     </mat-form-field> <br/>
+
+    <mat-form-field >
+      <mat-label>Estudios</mat-label>
+      <mat-select [(value)]="estudios">
+          <mat-option selected>---Selecciona---</mat-option>
+          <mat-option value="sin">Sin estudios</mat-option>
+          <mat-option value="prim">Estudios primarios</mat-option>
+          <mat-option value="eso">ESO</mat-option>
+          <mat-option value="medio">Grado medio</mat-option>
+          <mat-option value="sup">Grado superior</mat-option>
+      </mat-select>
+    </mat-form-field> <br/>
+
+    <mat-label>Sexo:</mat-label>
+      <mat-radio-group [(ngModel)]="sexo">
+        <mat-radio-button  value="H">Hombre</mat-radio-button>
+        <mat-radio-button  value="M">Mujer</mat-radio-button>
+    </mat-radio-group> <br/>
+
+    <mat-label>Hobbies:</mat-label>
+    <mat-checkbox [(ngModel)]="hobbiesCine" value="Cine">Cine</mat-checkbox>
+    <mat-checkbox [(ngModel)]="hobbiesTeatro" value="Teatro">Teatro</mat-checkbox>
+    <mat-checkbox [(ngModel)]="hobbiesMusica" value="Musica">Musica</mat-checkbox> <br/>
+
+    <mat-slide-toggle [(ngModel)]="habilitar">Habilitar</mat-slide-toggle> <br/>
+
+    <button mat-button color="accent" (click)="mostrar()">Mostrar datos</button>
   </mat-tab>
 
   <mat-tab label="Grid">
