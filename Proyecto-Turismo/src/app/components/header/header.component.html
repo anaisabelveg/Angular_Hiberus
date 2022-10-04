@@ -4,10 +4,10 @@
 
 <span>
     <ng-container *ngIf="usuario.length == 0">
-        <a (click)="login()">{{"nav.login" | translate}}</a> <br/>
+        <span (click)="login()">{{"nav.login" | translate}}</span> <br/>
     </ng-container>
     <ng-container *ngIf="usuario.length > 0">
-        Usuario: {{usuario}} <a (click)="logout()">Cerrar session</a> <br/>
+        Usuario: {{usuario}} <span (click)="logout()">Cerrar session</span> <br/>
     </ng-container>
 
     <a (click)="cambiarIdioma('es')"> 

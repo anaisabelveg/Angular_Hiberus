@@ -25,8 +25,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 const misRutas: Routes = [
   {path:'home', component: HomeComponent},
@@ -34,6 +37,7 @@ const misRutas: Routes = [
   {path:'museos/:id', component: DetalleMuseoComponent},
   {path:'restaurantes', component: RestaurantesComponent},
   {path:'equipo', component: EquipoComponent},
+  {path:'contacto', component: ContactoComponent},
   {path:'', redirectTo: 'home', pathMatch: 'full'}
 ]
 
@@ -47,7 +51,8 @@ const misRutas: Routes = [
     MuseosComponent,
     EquipoComponent,
     DetalleMuseoComponent,
-    RestaurantesComponent
+    RestaurantesComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,9 @@ const misRutas: Routes = [
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     AngularFirestore, 
