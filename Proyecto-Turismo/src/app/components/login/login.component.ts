@@ -1,33 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { EventoService } from './../../services/evento.service';
+import { LoginGoogleService } from './../../services/login-google.service';
+import { LoginFacebookService } from './../../services/login-facebook.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  usuario: string = '';
 
-  constructor(private loginService: LoginService){}
+  constructor(private loginserviceFacebook: LoginFacebookService, 
+      private loginserviceGoogle: LoginGoogleService, private eventoService: EventoService ) { }
 
-  login(){
-    this.loginService.login().then((info) => {
-      this.usuario = info.firstName;
+
+  loginFacebook(){
+    this.loginserviceFacebook.login().then((info) => {
+      //this.evento.emit(info.firstName);
+      this.eventoService.evento$.next(info.firstName);
     });
   }
 
-  logout(){
-    this.loginService.logout().then(() => {  // No recibo ningun dato por ser Promise<void>
-      
-      this.loginService.comprobarLogado().subscribe((dato)=>{
-        if (dato == null){
-          alert("Session cerrada");
-          this.usuario = '';
-        }
-      });
-    });
+  loginGoogle(){
+
+  }
+
+  loginFirebase(){
+
+  }
+
+  ngOnInit(): void {
   }
 
 }

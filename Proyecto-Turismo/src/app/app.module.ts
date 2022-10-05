@@ -29,7 +29,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { LoginComponent } from './components/login/login.component';
 
 const misRutas: Routes = [
   {path:'home', component: HomeComponent},
@@ -38,6 +40,7 @@ const misRutas: Routes = [
   {path:'restaurantes', component: RestaurantesComponent},
   {path:'equipo', component: EquipoComponent},
   {path:'contacto', component: ContactoComponent},
+  {path:'login', component: LoginComponent},
   {path:'', redirectTo: 'home', pathMatch: 'full'}
 ]
 
@@ -52,7 +55,8 @@ const misRutas: Routes = [
     EquipoComponent,
     DetalleMuseoComponent,
     RestaurantesComponent,
-    ContactoComponent
+    ContactoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +95,10 @@ const misRutas: Routes = [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('862431741831866')
+          },
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('370436452224-pejoknjnds348oboss4or12fp1skpjdd.apps.googleusercontent.com')
           }
         ]
       } as SocialAuthServiceConfig

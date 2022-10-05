@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="row">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <div align="center" [ngStyle]="{'marginTop':'100px', 'border':'thin solid silver'}">
+            <h1>Iniciar sesion</h1>
+
+            <button (click)="loginFacebook()"
+                [ngStyle]="{'backgroundColor':'#3B5999', 'color':'white', 'margin':'10px'}">
+                Iniciar sesión con Facebook
+            </button> <br/>
+            <button (click)="loginGoogle()"
+                [ngStyle]="{'backgroundColor':'#4385F5', 'color':'white', 'margin':'10px'}">
+                Iniciar sesión con Google+
+            </button>
+
+            <h3>___________ <sub>o</sub> __________</h3>
+
+            <button [ngStyle]="{'margin':'10px'}">Iniciar sesión con tu email</button>
+        </div>
+
+    </div>
+
+    <div class="col-md-3"></div>
+</div>
